@@ -1,78 +1,75 @@
-import {useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 
 const URI = process.env.api.root;
 
-const searchGroups = {
-  all: "All",
-  berries: "Berries",
-  contests: "Contests",
-  encounters: "Encounters",
-  evolution: "Evolution",
-  games: "Games",
-  items: "Items",
-  locations: "Locations",
-  machines: "Machines",
-  moves: "Moves",
-  pokemon: "Pokemon"
+const defaultSearchGroup = {
+  text: "Berries",
+  value: "berry"
 }
+
+const searchGroups = [
+  {
+    text: "Contests",
+    value: "contest",
+  },
+  {
+    text: "Encounters",
+    value: "encounter",
+  },
+  {
+    text: "Evoltions",
+    value: "evolution",
+  },
+  {
+    text: "Games",
+    value: "game",
+  },
+];
 
 const useForm = () => {
-  const form = useSelector((state) => state.searchForm)
-  const dispatch = useDispatch()
-  const submit = (e) =>{
-    e.preventDefault(); 
-    dispatch({type: 'SUBMIT'})
-  }
-  return {form, submit}
-}
+  const form = useSelector((state) => state.searchForm);
+  const dispatch = useDispatch();
+  const submit = (e) => {
+    e.preventDefault();
+    dispatch({ type: "SEARCH" });
+  };
+  return { form, submit };
+};
 
-export default function SearchForm(){
+export default function SearchForm() {
+  const { form, submit } = useForm();
 
-  const {form, submit} = useForm()
-  
-  const onChange = e => {
-    const key = e.target.id
-    const value = e.target.value
+  const onChange = (e) => {
+    const key = e.target.id;
+    const value = e.target.value;
     form[key] = value;
-    console.log(form);
-  }
-
-
+  };
 
   return (
-  <form autoComplete="off" noValidate>
-    {/* SELECT CONTROL - Group selection
-        All,
-        Berries,
-        Contests,
-        Encounters,
-        Evolution,
-        Games,
-        Items,
-        Locations,
-        Machines,
-        Moves,
-        Pokemon
-     */}
+    <form autoComplete="off" noValidate>
 
-     <label>
-
-     Search in:{' '}
-      <select id="searchGroup" onChange={onChange}>
-        {Object.values(searchGroups).map(group => (
-          <option key={group}>{group}</option>
-        ))}
-      </select>
-
+      {/* SELECT CONTROL - Group selection */}
+      <label>
+        Search in:{" "}
+        <select id="searchGroup" onChange={onChange}>
+          <option value={defaultSearchGroup.value}>{defaultSearchGroup.text}</option>
+          {searchGroups.map((group) => (
+            <option key={group.value} value={group.value}>
+              {group.text}
+            </option>
+          ))}
+        </select>
       </label>
-     {/* TEXT CONTROL - Keyword input */}
-     <label>
-      <input type="text" id="keyword"  onChange={onChange} />
+
+      {/* TEXT CONTROL - Keyword input */}
+      <label>
+        <input type="text" id="keyword" onChange={onChange} />
       </label>
-     {/*  */}
-      <button type="submit" onClick={submit}>Submit</button>
-        
-  </form>
-  )
+
+      {/* SUBMIT */}
+      <button type="submit" onClick={submit}>
+        Submit
+      </button>
+    </form>
+  );
 }
-

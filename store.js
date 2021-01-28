@@ -1,40 +1,32 @@
-import { createStore } from 'redux'
-import {useMemo} from "react"
+import { createStore } from "redux";
+import { useMemo } from "react";
+import {search} from "../Pokenextjs/actions"
 
 const initialState = {
   searchForm: {
-    searchGroup: 'all',
-    keyword: ''
+    searchGroup: "berries",
+    keyword: "",
   },
-  results: {
+  results: {},
+};
 
-  }
- 
-}
 const reducer = (state = initialState, action) => {
-  console.log(action)
-  console.log('dispatched')
-  switch(action.type){
-    case 'SEARCH':
-      console.log('search')
+  switch (action.type) {
+    case "SEARCH":
       return {
-        ...state
-      }
-      default:
-        return state;
+        ...state,
+        results: search(state.searchForm)
+      };
+    default:
+      return state;
   }
-}
+};
 
-const search = (e) => {
-  e.preventDefault();
+function initStore() {
+  return createStore(reducer);
 }
-
-function initStore(){
-  return createStore(reducer)
-}
-
 
 export function useStore(initialState) {
-  const store = useMemo(() => initStore(initialState), [initialState])
-  return store
+  const store = useMemo(() => initStore(initialState), [initialState]);
+  return store;
 }
