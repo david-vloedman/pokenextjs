@@ -1,17 +1,8 @@
 import {useSelector} from "react-redux"
 
-const useResults = () => {
-  const results = useSelector((state) => state.results);
-  return results;  
-};
-
-const useStatus = () => {
-  const pending = useSelector(state => state.requestPending);
-  const success = useSelector(state => state.requestSuccess);
-  const failure = useSelector(state => state.requestError);
-  console.log(failure)
-  const noResults = useSelector(state => state.noResults);
-  return {pending, success, failure, noResults};
+const useRequestState = () => {
+  const state = useSelector(state => state.requestState);
+  return state;
 }
 
 const SingleEntryView = entry => {
@@ -32,26 +23,28 @@ const RequestError = () => <div>Error</div>;
 
 export default function Results(){
   
-  const data = useResults();
-  const status = useStatus();
-  console.log(data, "from results");
+  
+  const state = useRequestState();
+  
+  if(!state.results && state){
+    return null;
+  }
 
-  if(status.failure){
+  if(state.status.failure){
     return <RequestError />;
   }
 
-  if(status.pending){
+  if(state.status.pending){
     return <RequestPending />
   }
 
-  if(status.noResults){
+  if(state.status.noResults){
     return <NoResults />;
   }
-  console.log(status.success)
-  if(status.success && data.count){
-    return <MultipleEntryView entries={data.results}/>;
+  
+  if(state.status.success && state.results.count){
+    return <MultipleEntryView entries={state.results}/>;
   }
 
-    
   return <SingleEntryView />;
 }

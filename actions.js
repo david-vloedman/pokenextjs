@@ -8,14 +8,16 @@ export function Search(form) {
       data => jsonHandler(data, dispatch),
       err => dispatch(requestFail(err))
     )
-    .catch(err => dispatch(requestFail(err)))
+    .catch(err => dispatch(noResults()))
   }
 }
 
 function jsonHandler(data, dispatch){
+  console.log(data)
+
   return data.json()
   .then(json => dispatch(requestSuccess(json)))
-  .catch(err => dispatch(requestFail(err)))
+  .catch(err => {console.log(err);dispatch(requestFail(err))})
 }
 
 // function dataHandler()
@@ -27,9 +29,10 @@ function fetchResults(searchGroup, keyword) {
   return fetch(url);
 }
 
-const REQUEST_SUCCESS = "REQUEST_SUCCESS";
-const REQUEST_FAIL = "REQUEST_FAIL";
-const REQUEST_PENDING = "REQUEST_PENDING";
+export const REQUEST_SUCCESS = "REQUEST_SUCCESS";
+export const REQUEST_FAIL = "REQUEST_FAIL";
+export const REQUEST_PENDING = "REQUEST_PENDING";
+export const NO_RESULTS = "NO_RESULTS";
 
 /* Action Creators */
 export function requestSuccess(data) {
@@ -51,4 +54,10 @@ export function requestFail(err){
     type: REQUEST_FAIL,
     payload: err,
   };
+}
+
+export function noResults(){
+  return {
+    type: NO_RESULTS,
+  }
 }

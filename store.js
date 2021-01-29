@@ -9,29 +9,77 @@ const initialState = {
     searchGroup: "",
     keyword: "",
   },
+
+  requestState: {
+    hasStatus: false,
+    status: {
+      pending: false,
+      success: false,
+      error: false,
+      notFound: false,
+      results: {}
+    }
+  }
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "REQUEST_INIT":
+    case actions.REQUEST_PENDING:
       return {
         ...state,
-        requestPending: true,
+        requestState:{
+          hasStatus: true,
+          status: {
+            pending: true,
+            success: false,
+            error: false,
+          }
+       
+        },
       };
-    case "REQUEST_FAIL":
+    case actions.REQUEST_FAIL:
       return {
         ...state,
-        requestError: true,
-        requestPending: false,
+        requestState: {
+          hasStatus: true,
+          status: {
+            pending: false,
+            success: false,
+            error: true,
+            notFound: false
+          }
+        }
       }
-    case "REQUEST_SUCCESS":
+    case actions.REQUEST_SUCCESS:
       return {
         ...state,
-        results: action.payload,
-        requestPending: false,
-        requestError: false,
-        requestSuccess: true,
+        requestState: {
+          results: action.payload,
+          hasStatus: true,
+          status: {
+            pending: false,
+            success: true,
+            error: false,
+            notFound: false,
+          },
+
+        },
+        
       };
+      case "NO_RESULTS":
+        return {
+          ...state,
+          requestState: {
+            hasStatus: true,
+            status: {
+              pending: false,
+              success: true,
+              error: false,
+              notFound: true,
+            }
+          
+          }
+        }
     default:
       return state;
   }
