@@ -1,5 +1,4 @@
-
-const API_BASE = "https://pokeapi.co/api/v2/";
+const endPoints = process.env.api;
 
 export function Search(form) {
   const {searchGroup, keyword} = form;
@@ -12,9 +11,14 @@ export function Search(form) {
   }
 }
 
+function jsonHandler(data){
+  return data.json()
+  .then(json => dispatch(requestSuccess(json)))
+  .catch(err => dispatch(requestFail(err)))
+}
+
 function fetchResults(searchGroup, keyword) {
-  const url = `${API_BASE}${searchGroup}/${keyword}`;
-  console.log(url)
+  const url = `${endPoints[searchGroup]}${keyword}`;
   return fetch(url);
 }
 

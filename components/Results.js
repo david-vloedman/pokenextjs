@@ -1,27 +1,52 @@
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 
 const useResults = () => {
   const results = useSelector((state) => state.results);
   return results;  
 };
 
-const SingleEntryView = (entry) => {
-  const entryArr = Object.entries(entry);
-  console.log(entryArr, "arra")
+const useStatus = () => {
+  const pending = useSelector(state => state.requestPending);
+  const success = useSelector(state => state.requestSuccess);
+  const failure = useSelector(state => state.requestError);
+  const noResults = useSelector(state => state.noResults);
+  return {pending, success, failure, noResults};
+}
 
-  return(
-    <div>hey</div>
-  )
+const SingleEntryView = entry => {
+  return (<div>hello, singles</div>);
 }
 
 const MultipleEntryView = (entries) => {
-
+  return(<div>hello, multiples</div>)
 }
+
+const NoResults = () => <div>No results</div>;
+
+const RequestPending = () => <div>Loading...</div>
 
 export default function Results(){
   
-  const results = useResults();
-  console.log(results, "from results");
+  const data = useResults();
+  const status = useStatus();
+  console.log(data, "from results");
 
-  return results? <div>Results</div> : <div>No Results</div>
+  if(!data || status.requestError){
+    return null;
+  }
+
+  if(status.pending){
+    return <RequestPending />
+  }
+
+  if(status.noResults){
+    return <NoResults />;
+  }
+
+  if(status.success & data.count){
+    return <MultipleEntryView entries={data.results}/>;
+  }
+
+    // has no count, show single item detail
+  return <SingleEntryView />;
 }

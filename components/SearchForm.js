@@ -1,29 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Search } from "../actions"
 
-const defaultSearchGroup = {
-  text: "Berries",
-  value: "berry"
-}
-
-const searchGroups = [
-  {
-    text: "Contests",
-    value: "contest",
-  },
-  {
-    text: "Encounters",
-    value: "encounter",
-  },
-  {
-    text: "Evoltions",
-    value: "evolution",
-  },
-  {
-    text: "Games",
-    value: "game",
-  },
-];
 
 const useForm = () => {
   const form = useSelector((state) => state.searchForm);
@@ -37,12 +14,17 @@ const useForm = () => {
 
 export default function SearchForm() {
   const { form, submit } = useForm();
-  form.searchGroup = defaultSearchGroup.value;
+  
   const onChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
     form[key] = value;
   };
+  
+  
+  const dropDownItems = Object.keys(process.env.api);
+  
+  const defaultDropDown = dropDownItems.slice(0, 1);
 
   return (
     <form autoComplete="off" noValidate>
@@ -51,10 +33,10 @@ export default function SearchForm() {
       <label>
         Search in:{" "}
         <select id="searchGroup" onChange={onChange}>
-          <option defaultValue value={defaultSearchGroup.value}>{defaultSearchGroup.text}</option>
-          {searchGroups.map((group) => (
-            <option key={group.value} value={group.value}>
-              {group.text}
+          {/* <option key={defaultDropDown} value={defaultDropDown}>{defaultDropDown}</option> */}
+          {dropDownItems.map(item => (
+            <option key={item}>
+              {item}
             </option>
           ))}
         </select>
