@@ -14,17 +14,16 @@ const useForm = () => {
 
 export default function SearchForm() {
   const { form, submit } = useForm();
+  const dropDownItems = Object.keys(process.env.api);
+  const defaultGroup = dropDownItems.slice(0,1)[0];
   
+  form.searchGroup = defaultGroup;
   const onChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
     form[key] = value;
   };
-  
-  
-  const dropDownItems = Object.keys(process.env.api);
-  
-  const defaultDropDown = dropDownItems.slice(0, 1);
+
 
   return (
     <form autoComplete="off" noValidate>
@@ -33,7 +32,7 @@ export default function SearchForm() {
       <label>
         Search in:{" "}
         <select id="searchGroup" onChange={onChange}>
-          {/* <option key={defaultDropDown} value={defaultDropDown}>{defaultDropDown}</option> */}
+          <option key={defaultGroup}>{defaultGroup}</option>
           {dropDownItems.map(item => (
             <option key={item}>
               {item}

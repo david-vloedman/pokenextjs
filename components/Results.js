@@ -9,11 +9,14 @@ const useStatus = () => {
   const pending = useSelector(state => state.requestPending);
   const success = useSelector(state => state.requestSuccess);
   const failure = useSelector(state => state.requestError);
+  console.log(failure)
   const noResults = useSelector(state => state.noResults);
   return {pending, success, failure, noResults};
 }
 
 const SingleEntryView = entry => {
+  const data = Object.entries(entry);
+  data.map(itm => console.log(item))
   return (<div>hello, singles</div>);
 }
 
@@ -25,14 +28,16 @@ const NoResults = () => <div>No results</div>;
 
 const RequestPending = () => <div>Loading...</div>
 
+const RequestError = () => <div>Error</div>;
+
 export default function Results(){
   
   const data = useResults();
   const status = useStatus();
   console.log(data, "from results");
 
-  if(!data || status.requestError){
-    return null;
+  if(status.failure){
+    return <RequestError />;
   }
 
   if(status.pending){
@@ -42,11 +47,11 @@ export default function Results(){
   if(status.noResults){
     return <NoResults />;
   }
-
-  if(status.success & data.count){
+  console.log(status.success)
+  if(status.success && data.count){
     return <MultipleEntryView entries={data.results}/>;
   }
 
-    // has no count, show single item detail
+    
   return <SingleEntryView />;
 }

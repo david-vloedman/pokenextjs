@@ -30,6 +30,7 @@ const reducer = (state = initialState, action) => {
         results: action.payload,
         requestPending: false,
         requestError: false,
+        requestSuccess: true,
       };
     default:
       return state;
