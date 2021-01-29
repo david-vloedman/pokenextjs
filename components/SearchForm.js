@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-
-const URI = process.env.api.root;
+import { Search } from "../actions"
 
 const defaultSearchGroup = {
   text: "Berries",
@@ -31,14 +30,14 @@ const useForm = () => {
   const dispatch = useDispatch();
   const submit = (e) => {
     e.preventDefault();
-    dispatch({ type: "SEARCH" });
+    dispatch(Search(form));
   };
   return { form, submit };
 };
 
 export default function SearchForm() {
   const { form, submit } = useForm();
-
+  form.searchGroup = defaultSearchGroup.value;
   const onChange = (e) => {
     const key = e.target.id;
     const value = e.target.value;
@@ -52,7 +51,7 @@ export default function SearchForm() {
       <label>
         Search in:{" "}
         <select id="searchGroup" onChange={onChange}>
-          <option value={defaultSearchGroup.value}>{defaultSearchGroup.text}</option>
+          <option defaultValue value={defaultSearchGroup.value}>{defaultSearchGroup.text}</option>
           {searchGroups.map((group) => (
             <option key={group.value} value={group.value}>
               {group.text}

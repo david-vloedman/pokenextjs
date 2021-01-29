@@ -1,21 +1,35 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { useMemo } from "react";
-import {search} from "../Pokenextjs/actions"
+import thunk from "redux-thunk";
+import * as actions from "./actions"
+
 
 const initialState = {
   searchForm: {
-    searchGroup: "berries",
+    searchGroup: "",
     keyword: "",
   },
-  results: {},
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SEARCH":
+    case "REQUEST_INIT":
       return {
         ...state,
-        results: search(state.searchForm)
+        requestPending: true,
+      };
+    case "REQUEST_FAIL":
+      return {
+        ...state,
+        requestError: true,
+        requestPending: false,
+      }
+    case "REQUEST_SUCCESS":
+      return {
+        ...state,
+        results: action.payload,
+        requestPending: false,
+        requestError: false,
       };
     default:
       return state;
@@ -23,7 +37,7 @@ const reducer = (state = initialState, action) => {
 };
 
 function initStore() {
-  return createStore(reducer);
+  return createStore(reducer, applyMiddleware(thunk));
 }
 
 export function useStore(initialState) {
