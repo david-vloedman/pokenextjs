@@ -6,7 +6,7 @@ export function Search(form) {
   
   return function(dispatch){
     return fetchResults(searchGroup, keyword).then(
-      data => dispatch(requestSuccess(data)),
+      data => data.json().then(json => dispatch(requestSuccess(json))),
       err => dispatch(requestFail(err))
     )
   }
