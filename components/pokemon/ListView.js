@@ -11,7 +11,6 @@ export default function ListView(prop){
   )
 }
 
-
 const ListItem = item => (
   <li key={item.name}>
     {item.name}

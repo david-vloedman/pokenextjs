@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Layout({ children }) {
   return (
     <div>
-      <Container className={"bg-red"}>
+      <Container className={"bg-red layout-container"}>
         <Row>
           <Col>
             <Header/>          
@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         </Row>
         <Row>
           <Col>
-          <div className={"content-container p-2"}>
+          <div className={"content-container p-2 my-2"}>
           {children}
           </div>
           </Col>

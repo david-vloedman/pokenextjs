@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 import DetailView from "../components/pokemon/DetailView";
-import Container from "react-bootstrap/Container"
 
 const POKEMON_INDEX = process.env.api.pokemon;
 
@@ -25,7 +24,7 @@ async function getAbilityDetails(url) {
 
 export async function getStaticProps() {
   try {
-    const charmanderUrl = `${POKEMON_INDEX}${3}`;
+    const charmanderUrl = `${POKEMON_INDEX}${1}`;
     const response = await fetch(charmanderUrl);
     const json = await response.json();
     const abilities = json.abilities.map((a) => a.ability);
@@ -48,7 +47,7 @@ export async function getStaticProps() {
     console.error(error);
     return {
       props: {
-        uhg: "the",
+        
       },
     };
   }

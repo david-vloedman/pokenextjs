@@ -18,6 +18,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .bg-red{
@@ -33,6 +34,12 @@ a {
 }
 
 .content-container{
-  background-color: var(--yellow);
-  color:rgb(0, 0, 36);
+  color: #333;
+  background-color: rgb(187, 187, 187);
+  border-radius: 5px;
+  border: 2px var(--yellow) solid;
+}
+
+.layout-container{
+  min-width: 375px;
 }

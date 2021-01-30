@@ -2,6 +2,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 
+const POKEMON_ROOT = process.env.api.pokemon;
+
 const AbilitiesView = ({ abilities }) => {
   return (
     <div>
@@ -37,12 +39,7 @@ const StatsView = ({ stats }) => (
   </div>
 );
 
-const SpeciesView = ({ species }) => (
-  <div>
-    <h3>Species</h3>
-    <Col>{species.name}</Col>
-  </div>
-);
+
 
 const StatView = ({ stat }) => (
   <div>
@@ -52,24 +49,20 @@ const StatView = ({ stat }) => (
 );
 
 export default function DetailView({ props }) {
+  console.log(props)
   const official = props.sprites.other["official-artwork"].front_default;
-
+  
   return (
     <div>
       <h6>Pokemon Details</h6>
-      <h1 className={"text-capitalize"}>{props.name}</h1>
+      <h4 className={"text-capitalize"}>{props.name}</h4>
 
       <Row>
         <Col xs={12}>
           <Image src={official} alt={`${props.name}-img`} fluid />
         </Col>
       </Row>
-
-      <Row>
-        <Col>
-          <SpeciesView species={props.species} />
-        </Col>
-      </Row>
+    
       <Row>
         <Col>
         <StatsView stats={props.stats} />
@@ -83,3 +76,4 @@ export default function DetailView({ props }) {
     </div>
   );
 }
+
