@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 import DetailView from "../components/pokemon/DetailView";
+import Container from "react-bootstrap/Container"
 
 const POKEMON_INDEX = process.env.api.pokemon;
 

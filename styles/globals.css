@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* font-family: 'Press Start 2P', cursive;
+font-family: 'VT323', monospace; */
+
 html,
 body {
   padding: 0;
@@ -13,4 +18,21 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.bg-red{
+  background-color: var(--red)
+}
+
+.header{
+  font-family: 'Press Start 2P', cursive;
+  color: #333;
+  background-color: rgb(187, 187, 187);
+  border-radius: 5px;
+  border: 2px var(--yellow) solid;
+}
+
+.content-container{
+  background-color: var(--yellow);
+  color:rgb(0, 0, 36);
 }
