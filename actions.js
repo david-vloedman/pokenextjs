@@ -4,12 +4,16 @@ export function Search(form) {
   const {searchGroup, keyword} = form;
   console.log(form)
   return function(dispatch){
-    return fetchResults(searchGroup, keyword).then(
+    return fetchData(searchGroup, keyword).then(
       data => jsonHandler(data, dispatch),
       err => dispatch(requestFail(err))
     )
     .catch(err => dispatch(noResults()))
   }
+}
+
+export function request(form){
+  
 }
 
 function jsonHandler(data, dispatch){
@@ -21,11 +25,14 @@ function jsonHandler(data, dispatch){
 }
 
 // function dataHandler()
+function handleResponse(response){
+  if(response.status === 404){
+    
+  }
+}
 
-function fetchResults(searchGroup, keyword) {
-
+function fetchData(searchGroup, keyword) {
   const url = `${endPoints[searchGroup]}${keyword}`;
-  console.log(url)
   return fetch(url);
 }
 

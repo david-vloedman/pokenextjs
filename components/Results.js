@@ -2,6 +2,7 @@ import {useSelector} from "react-redux"
 
 const useRequestState = () => {
   const state = useSelector(state => state.requestState);
+  console.log(state);
   return state;
 }
 

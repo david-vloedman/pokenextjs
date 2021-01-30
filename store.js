@@ -19,7 +19,9 @@ const initialState = {
       notFound: false,
       results: {}
     }
-  }
+  },
+
+  
 };
 
 const reducer = (state = initialState, action) => {
