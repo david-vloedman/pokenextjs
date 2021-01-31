@@ -3,7 +3,7 @@ import DetailView from "../../../components/pokemon/DetailView";
 
 const POKEMON_ROOT = process.env.api.pokemon;
 
-export default function DetailPage(props) {
+function DetailPage(props) {
   
   return (
     <Layout>
@@ -32,3 +32,4 @@ export async function getServerSideProps(context){
   };
 }
 
+export default DetailPage;
