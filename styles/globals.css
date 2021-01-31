@@ -19,6 +19,8 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px rgb(139, 139, 139);
+  color: #000;
 }
 
 .bg-red{
