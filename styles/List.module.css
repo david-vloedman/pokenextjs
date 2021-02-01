@@ -1,0 +1,14 @@
+.indexList{
+  list-style-type: none;
+}
+
+.indexListItem{
+  padding: 4px;
+  max-height: 50px;
+  max-width: 300px;
+}
+
+.thumbnail{
+  max-width: 50px;
+  max-height: 50px;
+}

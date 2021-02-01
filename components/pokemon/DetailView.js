@@ -2,8 +2,6 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 
-const POKEMON_ROOT = process.env.api.pokemon;
-
 const AbilitiesView = ({ abilities }) => {
   return (
     <div>
@@ -49,7 +47,7 @@ const StatView = ({ stat }) => (
 );
 
 export default function DetailView({ props }) {
-  console.log(props)
+  
   const official = props.sprites.other["official-artwork"].front_default;
   
   return (

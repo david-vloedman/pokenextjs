@@ -1,19 +1,29 @@
 import Link from "next/link"
+import styles from  "../../styles/List.module.css"
 
-export default function ListView(prop){
-  console.log(prop);
-  const items = Object.values(prop.data);
-  items.map(item => console.log(item))
+export default function ListView({props}){
+  const pageData = Object.values(props);
+  console.log(pageData)
   return (
-    <ul>
-      {items.map(item => (<li key={item.name}><Link href={item.url}>{item.name}</Link></li>))}
+    <ul className={styles.indexList}>
+      
+      {pageData.map(li => <ListItem item={li} />)}
     </ul>
   )
 }
 
-const ListItem = item => (
-  <li key={item.name}>
-    {item.name}
-  </li>
-);
+const ListItem = ({item}) => {
   
+
+  return (
+    <Link href={`/details/pokemon/${item.id}`}>
+      <li key={item.name} className={styles.indexListItem}>
+      <img src={item.imgUrl} className={styles.thumbnail}/>
+      <Capitialized word={item.name} />
+      </li>
+    </Link>
+  
+)};
+  
+
+const Capitialized = ({word}) => <span className={"text-capitalize"}>{word}</span>
