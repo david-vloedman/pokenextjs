@@ -20,7 +20,6 @@ a {
   box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
   text-shadow: 2px 2px rgb(139, 139, 139);
-  color: #000;
 }
 
 .bg-red{
@@ -36,10 +35,10 @@ a {
 }
 
 .content-container{
-  color: #333;
+  /* color: #333;
   background-color: rgb(187, 187, 187);
   border-radius: 5px;
-  border: 2px var(--yellow) solid;
+  border: 2px var(--yellow) solid; */
 }
 
 .layout-container{

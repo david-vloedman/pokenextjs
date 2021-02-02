@@ -8,9 +8,6 @@ export default function PokemonList(props) {
   return(
     <Layout>
       <ListView props={props} />
-      <Pagination>
-
-      </Pagination>
     </Layout>
   )
    
@@ -21,7 +18,7 @@ export async function getServerSideProps(context) {
 
   let url;
   
-  if(pageNumber){
+  if(pageNumber > 1){
     const offset = 20 * pageNumber;
     const limit = 20;
     url = `${POKEMON_ROOT}?offset=${offset}&limit=${limit}`;
