@@ -17,7 +17,14 @@ function DetailPage(props) {
 export async function getServerSideProps(context){
   
   const id = context.params.id;
-  return await getPokemonDetails(id);
+  const url = `${POKEMON_ROOT}${id}`;
+  const data = await getPokemonDetails(url);
+  
+  return {
+    props: {
+      ...data
+    }
+  };
 }
 
 export default DetailPage;
