@@ -9,13 +9,11 @@ export default function ListView({props}){
 
   
   return (
-    <div className="m-3">
-      {results.map(item => (
-        <div className="m-3">
+      results.map(item => (
+        <div className="mx-auto my-3">
           <PokemonCard key={item.id} pokemon={item} />
         </div>
-      ))}
-    </div>
+      ))
   )
 }
 
