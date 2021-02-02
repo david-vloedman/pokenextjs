@@ -22,8 +22,8 @@ a {
   text-shadow: 2px 2px rgb(139, 139, 139);
 }
 
-.bg-red{
-  background-color: var(--red)
+.main-bg{
+  background-color: rgb(169, 182, 255);
 }
 
 .header{
@@ -34,12 +34,6 @@ a {
   border: 2px var(--yellow) solid;
 }
 
-.content-container{
-  /* color: #333;
-  background-color: rgb(187, 187, 187);
-  border-radius: 5px;
-  border: 2px var(--yellow) solid; */
-}
 
 .layout-container{
   min-width: 375px;

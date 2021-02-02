@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Layout({ children }) {
   return (
     <div>
-      <Container className={"bg-red layout-container"}>
+      <Container className={"main-bg layout-container"}>
         <Row>
           <Col>
             <Header/>          

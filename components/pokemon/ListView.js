@@ -1,38 +1,20 @@
 import Link from "next/link"
 import Pagination from "react-bootstrap/Pagination"
 import styles from  "../../styles/List.module.css"
+import PokemonCard from "../../containers/Pokemon-card"
 
 export default function ListView({props}){
 
   const {currentPage, pageCount, results} = props;
 
-  const pages = new Array(pageCount);
-
-  const PageItem = ({num}) => {
-
-    console.log(num)
-    return(
-    <Pagination.Item key={num} active={((num + 1)===currentPage)}>
-      {num}
-    </Pagination.Item>
-  )}
-
-  const items = [];
-
-  for(let i = 1; i <= pages.length; i++){
-    items.push(
-      <PageItem num={i} />
-    )
-  }
-
-  console.log(items);
   
   return (
-    <div>
-      <ul className={styles.indexList}>
-        {results.map(li => <ListItem key={li.name} item={li} />)}
-      </ul>
-      <Pagination size={"sm"}>{items}</Pagination>
+    <div className="m-3">
+      {results.map(item => (
+        <div className="m-3">
+          <PokemonCard key={item.id} pokemon={item} />
+        </div>
+      ))}
     </div>
   )
 }

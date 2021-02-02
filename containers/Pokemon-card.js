@@ -9,33 +9,55 @@ const BodyContainer = ({ children }) => (
   <div className={Styles.pokemon_card_body}>{children}</div>
 );
 
+const List = ({items, propName}) => (
+  <ul className={Styles.pokemon_card_list}>
+  {items?.map(item => (
+    <li key={item[propName]}>{item[propName]}</li>
+  ))}
+  </ul>
+)
+
+const StatList = ({stats}) => (
+  <ul className={Styles.pokemon_card_list}>
+    {stats?.map(
+      stat => (
+        <li key={stat.name}>{stat.name}{": "}{stat.stat}</li>
+      )
+    )}
+  </ul>
+)
+
+const Capitialized = ({word}) => <span className="text-capitalize">{word}</span>
+
 export default function PokemonCard({ pokemon }) {
+  console.log({pokemon});
   return (
-    <Card key={pokemon.id} className={Styles.pokemon_card}>
+    
+    <Card key={pokemon?.id} className={Styles.pokemon_card}>
+      
       <ImgContainer>
         <Card.Img
           variant="top"
-          src={pokemon.img}
+          src={pokemon?.img}
           className={Styles.pokemon_card_img}
-          fluid="fluid"
         />
       </ImgContainer>
 
       <BodyContainer>
         <Card.Body>
-          <Card.Title>{pokemon.name}</Card.Title>
-          <Card.Subtitle>Abilities</Card.Subtitle>
+          <Card.Title><Capitialized word={pokemon?.name}/></Card.Title>
           
-            <Card.Text>
-              <ul className={Styles.pokemon_card_list}>
-                {pokemon.moves.map((move) => (
-                  <li key={move.name}>{move.name}</li>
-                ))}
-              </ul>
-            </Card.Text>
+            Types:
           
+          <List items={pokemon?.types} propName={"name"} />
+          
+            Base Stats:
+          
+          <StatList stats={pokemon?.stats} />
         </Card.Body>
       </BodyContainer>
+      
     </Card>
+    
   );
 }

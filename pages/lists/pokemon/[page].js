@@ -1,17 +1,23 @@
 import ListView from "../../../components/pokemon/ListView";
 import Layout from "../../../components/Layout";
-import Pagination from "react-bootstrap/Pagination"
+import {getPokemonDetails} from "../../../helpers/request-helpers";
 
 const POKEMON_ROOT = process.env.api.pokemon;
 
 export default function PokemonList(props) {
   return(
     <Layout>
+      
+
+      
       <ListView props={props} />
+      
     </Layout>
   )
    
 }
+
+const createRequestURL = ({root, offset, limit}) => `${root}?offset=${offset}&limit=${limit}`;
 
 export async function getServerSideProps(context) {
   const pageNumber = context.params.page;
@@ -21,12 +27,17 @@ export async function getServerSideProps(context) {
   if(pageNumber > 1){
     const offset = 20 * pageNumber;
     const limit = 20;
-    url = `${POKEMON_ROOT}?offset=${offset}&limit=${limit}`;
+    url = createRequestURL({root, offset, limit});
   } else {
     url = `${POKEMON_ROOT}`;
   }
 
+  const getNextPage = () => {
+
+  }
+
   try{
+
     const res = await fetch(url);
     const firstData = await res.json();
     
@@ -34,13 +45,7 @@ export async function getServerSideProps(context) {
   
     const pageData = await Promise.all(
       firstData.results.map(async (poke) => {
-        const res = await fetch(poke.url);
-        const secondData = await res.json();
-        return {
-          id: secondData.id,
-          name: secondData.name,
-          imgUrl: secondData.sprites.front_default,
-        };
+        return await getPokemonDetails(poke.url);
       })
     );
   
