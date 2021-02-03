@@ -11,10 +11,7 @@ export default function Layout({ children }) {
     <div>
       <Container className={"main-bg layout-container"}>
         <Row>
-          
-            {/* <Header/>           */}
-            <Nav />
-          
+          <Nav />
         </Row>
         <Row>
           <Col>

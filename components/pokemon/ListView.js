@@ -3,9 +3,8 @@ import styles from  "../../styles/List.module.css"
 import PokemonCard from "../../containers/Pokemon-card"
 
 export default function ListView({props}){
-
-  const {currentPage, pageCount, results} = props;
-
+  
+  const {results} = props;
   
   return (
       results.map(item => (
@@ -22,7 +21,6 @@ const ListItem = ({item}) => {
       <Capitialized word={item.name} />
       </li>
     </Link>
-  
 )};
 
 const Capitialized = ({word}) => <span className={"text-capitalize"}>{word}</span>
