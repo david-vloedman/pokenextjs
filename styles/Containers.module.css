@@ -2,11 +2,11 @@
   width: 20rem !important; 
   border-bottom: rgba(160, 52, 52, 0.63) 2px solid !important;
   border-right: rgba(160, 52, 52, 0.63) 2px solid !important;
-  border-top:rgb(255, 58, 58) 2px solid !important;
-  border-left: rgb(255, 58, 58) 2px solid !important;
+  border-top:rgb(255, 142, 142) 2px solid !important;
+  border-left: rgb(255, 142, 142) 2px solid !important;
   box-shadow: 1px 1px 5px #555 !important;
   border-radius: 6px !important;
-  background-color:rgb(255, 75, 75) !important;
+  background-color:rgb(255, 73, 73) !important;
   margin: 1em;
 }
 
@@ -17,8 +17,8 @@
 .pokemon_card_img_container{
   border-top: rgba(160, 52, 52, 0.63) 2px solid;
   border-left: rgba(160, 52, 52, 0.63) 2px solid;
-  border-bottom:rgb(255, 58, 58) 2px solid;
-  border-right: rgb(255, 58, 58) 2px solid;
+  border-bottom:rgb(255, 142, 142) 2px solid;
+  border-right: rgb(255, 142, 142) 2px solid;
   box-shadow: 0px 0px 3px #555 inset;
   background-color: rgb(185, 185, 185);
   max-width: 18rem;  
