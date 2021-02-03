@@ -58,8 +58,9 @@ export default function PokemonList(props) {
 		<Layout>
 			<main className={Styles.list_container}>
 				<ListView props={props} />
-				<Pagination>{paginationComponents(props.currentPage)}</Pagination>
+				
 			</main>
+      <div className={Styles.pagination_container}><Pagination className={'mx-auto text-center'}>{paginationComponents(props.currentPage)}</Pagination></div>
 		</Layout>
 	)
 }
