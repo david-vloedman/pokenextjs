@@ -3,7 +3,6 @@ import Layout from '../../../components/Layout'
 import { getPokemonDetails } from '../../../helpers/request-helpers'
 import Styles from '../../../styles/List.module.css'
 import Pagination from 'react-bootstrap/Pagination'
-import { ListItemSecondaryAction } from '@material-ui/core'
 
 const POKEMON_ROOT = process.env.api.pokemon
 
@@ -23,29 +22,24 @@ export default function PokemonList(props) {
 		// get the pagination links that are going to be displayed
 		const index = pageNumber - 1 // minus one to account for array index starting @ zero
 		const first = paginationHrefs[0] // get the first page
-		const last = paginationHrefs[paginationHrefs.length - 1] // last page
-		const next = paginationHrefs[index + 1] // get the next page link
-		const previous = index > 1 ? paginationHrefs[index - 1] : null // get the previous page
+		const last = index < paginationHrefs.length ? paginationHrefs[paginationHrefs.length - 1] : null // last page
+		const next = index < paginationHrefs.length ? paginationHrefs[index + 1] : null// get the next page link
+		const previous = index >= 1 ? paginationHrefs[index - 1] : null // get the previous page
 
-    if(previous !== null){
-      first.display = '<<'
+    const items = []
+    
+		if (previous) {
+			first.display = '<<'
       previous.display = '<'
+      items.push(first)
+			items.push(previous)
     }
-    next.display = '>'
-    last.display = '>>'
-    
-		const items = []
-    console.log(items, "ITEMS");
-    
-
-    if (previous !== null) {
-      items.push(first);
-      items.push(previous)
-    };
-    items.push(next)
-    items.push(last);
-		
-		
+    if(next){
+      next.display = '>'
+      last.display = '>>'
+      items.push(next)
+      items.push(last)
+    }
 
 		return items.map((item) => (
 			<Pagination.Item key={item.page} href={item.href} active={item.active}>
@@ -58,9 +52,12 @@ export default function PokemonList(props) {
 		<Layout>
 			<main className={Styles.list_container}>
 				<ListView props={props} />
-				
 			</main>
-      <div className={Styles.pagination_container}><Pagination className={'mx-auto text-center'}>{paginationComponents(props.currentPage)}</Pagination></div>
+			<div className={Styles.pagination_container}>
+				<Pagination className={'mx-auto text-center'}>
+					{paginationComponents(props.currentPage)}
+				</Pagination>
+			</div>
 		</Layout>
 	)
 }
@@ -84,8 +81,8 @@ export async function getServerSideProps(context) {
 	try {
 		const res = await fetch(url)
 		const firstData = await res.json()
-
-		const pageCount = Math.ceil(firstData.count / 20)
+    console.log(firstData)
+		const pageCount = Math.floor(firstData.count / 20)
 
 		const pageData = await Promise.all(
 			firstData.results.map(async (poke) => {
