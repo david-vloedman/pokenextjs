@@ -3,7 +3,7 @@ import Layout from "../../../components/Layout";
 import {getPokemonDetails} from "../../../helpers/request-helpers";
 import Styles from "../../../styles/List.module.css"
 
-const POKEMON_ROOT = process.env.api.pokemon;
+
 
 export default function PokemonList(props) {
   return(
@@ -16,20 +16,24 @@ export default function PokemonList(props) {
    
 }
 
-const createRequestURL = ({root, offset, limit}) => `${root}?offset=${offset}&limit=${limit}`;
+const createRequestURL = (root, offset, limit) => `${root}?offset=${offset}&limit=${limit}`;
 
 export async function getServerSideProps(context) {
   const pageNumber = context.params.page;
-
+  const POKEMON_ROOT = process.env.api.pokemon;
   let url;
+
+  console.log(POKEMON_ROOT)
   
   if(pageNumber > 1){
-    const offset = 20 * pageNumber;
+    const offset = 20 * parseInt(pageNumber);
     const limit = 20;
-    url = createRequestURL({root, offset, limit});
+    url = createRequestURL(POKEMON_ROOT, offset, limit);
   } else {
     url = `${POKEMON_ROOT}`;
   }
+
+  console.log(url)
 
   const getNextPage = () => {
 

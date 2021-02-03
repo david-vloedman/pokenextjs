@@ -30,7 +30,6 @@ const StatList = ({stats}) => (
 const Capitialized = ({word}) => <span className="text-capitalize">{word}</span>
 
 export default function PokemonCard({ pokemon }) {
-  console.log({pokemon});
   return (
     
     <Card key={pokemon?.id} className={Styles.pokemon_card}>
