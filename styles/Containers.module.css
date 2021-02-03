@@ -7,7 +7,7 @@
   box-shadow: 1px 1px 5px #555 !important;
   border-radius: 6px !important;
   background-color:rgb(255, 75, 75) !important;
-
+  margin: 1rem;
 }
 
 .pokemon_card_list{

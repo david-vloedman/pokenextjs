@@ -1,0 +1,10 @@
+/* Navigation Bar */
+.nav_bar{
+  width: 100%;
+  background-color:rgb(255, 75, 75) !important;
+}
+
+.brand_text{
+  color: yellow;
+  text-shadow: 2px 2px rgb(39, 71, 255);
+}

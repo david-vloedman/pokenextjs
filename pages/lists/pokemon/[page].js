@@ -1,17 +1,16 @@
 import ListView from "../../../components/pokemon/ListView";
 import Layout from "../../../components/Layout";
 import {getPokemonDetails} from "../../../helpers/request-helpers";
+import Styles from "../../../styles/List.module.css"
 
 const POKEMON_ROOT = process.env.api.pokemon;
 
 export default function PokemonList(props) {
   return(
     <Layout>
-      
-
-      
-      <ListView props={props} />
-      
+      <main className={Styles.list_container}>  
+        <ListView props={props} />
+      </main>
     </Layout>
   )
    

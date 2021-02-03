@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Pagination from "react-bootstrap/Pagination"
 import styles from  "../../styles/List.module.css"
 import PokemonCard from "../../containers/Pokemon-card"
 
@@ -10,9 +9,7 @@ export default function ListView({props}){
   
   return (
       results.map(item => (
-        <div className="mx-auto my-3">
-          <PokemonCard key={item.id} pokemon={item} />
-        </div>
+            <PokemonCard key={item.id} pokemon={item} />
       ))
   )
 }

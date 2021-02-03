@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Nav from "./Nav"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Layout({ children }) {
@@ -10,9 +11,10 @@ export default function Layout({ children }) {
     <div>
       <Container className={"main-bg layout-container"}>
         <Row>
-          <Col>
-            <Header/>          
-          </Col>
+          
+            {/* <Header/>           */}
+            <Nav />
+          
         </Row>
         <Row>
           <Col>
