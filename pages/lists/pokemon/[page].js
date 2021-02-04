@@ -10,7 +10,7 @@ const POKEMON_ROOT = process.env.api.pokemon
 export default function PokemonList(props) {
 	const paginationHrefs = []
 	const pageCountArr = new Array(props.pageCount)
-	
+
 	for (let i = 0; i < pageCountArr.length; i++) {
 		const page = i + 1
 		paginationHrefs.push({
@@ -35,25 +35,26 @@ export default function PokemonList(props) {
 
 		if (previous) {
 			first.display = '<<'
-      previous.display = '<'
+			previous.display = '<'
 
-      if(first !== previous){
-        items.push(first)
-      }
+			if (first !== previous) {
+				items.push(first)
+			}
 			items.push(previous)
-			
 		}
 		if (next) {
 			next.display = '>'
-      last.display = '>>'
-      items.push(next);
-      if(next !== last) items.push(last)
-      
-			
+			last.display = '>>'
+			items.push(next)
+			if (next !== last) items.push(last)
 		}
-    
+
 		return items.map((item) => (
-			<Pagination.Item key={item.page} href={item.href} className={Styles.pagination_button}>
+			<Pagination.Item
+				key={item.page}
+				href={item.href}
+				className={Styles.pagination_button}
+			>
 				{item.display}
 			</Pagination.Item>
 		))
@@ -76,12 +77,16 @@ export default function PokemonList(props) {
 const createRequestURL = (root, offset, limit) =>
 	`${root}?offset=${offset}&limit=${limit}`
 
+/**
+ *
+ * @param {*} context
+ */
 export async function getServerSideProps(context) {
 	const pageNumber = context.params.page
-  const habitatImageDirs = getHabitatImages('./public/static/images/habitats')
-  
+	const habitatImageDirs = getHabitatImages('./public/static/images/habitats')
+
 	let url
-  
+
 	if (pageNumber > 1) {
 		const offset = 20 * pageNumber
 		const limit = 20
@@ -89,34 +94,32 @@ export async function getServerSideProps(context) {
 	} else {
 		url = `${POKEMON_ROOT}`
 	}
-  
+
 	try {
 		const res = await fetch(url)
-    const firstData = await res.json()
+		const firstData = await res.json()
 		const pageCount = Math.floor(firstData.count / 20)
 		const pageData = await Promise.all(
 			firstData.results.map(async (poke) => {
 				return await getPokemonDetails(poke.url)
 			})
 		)
-      if(pageData.notFound){
-        return {
-          props:{}
-
-        }
-      }
+		if (pageData.notFound) {
+			return {
+				props: {},
+			}
+		}
 		return {
 			props: {
 				currentPage: pageNumber,
-        pageCount: pageCount,
-        habitatImgs: habitatImageDirs,
+				pageCount: pageCount,
+				habitatImgs: habitatImageDirs,
 				results: Object.values(pageData),
 			},
 		}
 	} catch (err) {
-		
 		return {
-			notFound: true
+			notFound: true,
 		}
 	}
 }

@@ -48,3 +48,41 @@
 	border-bottom: rgb(255, 58, 58) 2px solid;
 	border-right: rgb(255, 58, 58) 2px solid;
 }
+
+.bg_habitat_cave{
+  background-image: url('/static/images/habitats/compressed/cave.jpg');
+}
+
+.bg_habitat_sea{
+  background-image: url('/static/images/habitats/compressed/sea.jpg');
+}
+
+.bg_habitat_forest{
+  background-image: url('/static/images/habitats/compressed/forest.jpg');
+}
+
+.bg_habitat_waters_edge{
+  background-image: url('/static/images/habitats/compressed/waters-edge.jpg');
+}
+
+.bg_habitat_rough{
+  background-image: url('/static/images/habitats/compressed/rough-terrain.jpg');
+}
+
+.bg_habitat_grassland{
+  background-image: url('/static/images/habitats/compressed/grassland.jpg');
+}
+
+.bg_habitat_urban{
+  background-image: url('/static/images/habitats/compressed/urban.jpg');
+}
+
+.bg_habitat_rare{
+  background-image: url('/static/images/habitats/compressed/rare.jpg');
+}
+
+.bg_habitat_mountain{
+  background-image: url('/static/images/habitats/compressed/mountain.jpg');
+}
+
+

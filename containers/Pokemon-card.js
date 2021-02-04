@@ -1,9 +1,15 @@
 import Card from 'react-bootstrap/Card'
 import Styles from '../styles/Containers.module.css'
+import {getHabitatBGClass} from "../lib/misc-helpers"
 
-const ImgContainer = ({ children }) => (
-	<div className={Styles.pokemon_card_img_container}>{children}</div>
-)
+const ImgContainer = ({ habitat, children }) => {
+  console.log(getHabitatBGClass(habitat))
+
+  const cssClass = Styles[getHabitatBGClass(habitat)];
+  console.log(Styles)
+  return(
+	<div className={`${Styles.pokemon_card_img_container} ${cssClass}`}>{children}</div>
+)}
 
 const BodyContainer = ({ children }) => (
 	<div className={Styles.pokemon_card_body}>{children}</div>
@@ -39,7 +45,7 @@ export default function PokemonCard({ pokemon }) {
 			<Card.Title className={Styles.pokemon_card_title_container}>
 				<Title word={pokemon?.name} />
 			</Card.Title>
-			<ImgContainer>
+			<ImgContainer habitat={pokemon.habitat}>
 				<Card.Img
 					variant='top'
 					src={pokemon?.img}
@@ -53,6 +59,7 @@ export default function PokemonCard({ pokemon }) {
 					<List items={pokemon?.types} propName={'name'} />
 					Base Stats:
 					<StatList stats={pokemon?.stats} />
+          Habitat: {pokemon?.habitat}
 				</Card.Body>
 			</BodyContainer>
 		</Card>
