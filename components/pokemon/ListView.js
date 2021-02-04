@@ -5,6 +5,8 @@ import PokemonCard from '../../containers/Pokemon-card'
 export default function ListView({ props }) {
 	const { results } = props
 
+  if(!results) return null;
+
 	return results.map((item) => <PokemonCard key={item.id} pokemon={item} />)
 }
 

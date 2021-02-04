@@ -37,7 +37,8 @@
 .pokemon_card_body {
 	font-size: 0.6rem;
 	box-shadow: 0px 0px 3px #555 inset;
-	background-color: rgb(185, 185, 185);
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(167,167,167,1) 100%); 
 	color: rgb(39, 39, 39);
 	max-width: 18rem;
 	margin: 1rem;

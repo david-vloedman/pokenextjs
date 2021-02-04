@@ -49,6 +49,9 @@ module.exports = {
       "type": "https://pokeapi.co/api/v2/type/",
       "version": "https://pokeapi.co/api/v2/version/",
       "version-group": "https://pokeapi.co/api/v2/version-group/"
+    },
+    localPaths: {
+      habitats: '/public/static/images/habitats'
     }
   }
 }

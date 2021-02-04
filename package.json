@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "bootstrap": "^4.6.0",
+    "fs": "0.0.1-security",
     "next": "10.0.5",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.3",

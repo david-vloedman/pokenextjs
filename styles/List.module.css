@@ -8,3 +8,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+.pagination_button > a{
+  border: none;
+  margin: 2px;
+  color: yellow;
+  text-shadow: 2px 2px rgb(39, 71, 255);
+  background-color:rgb(255, 75, 75) !important;
+}

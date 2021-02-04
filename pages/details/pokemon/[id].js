@@ -1,11 +1,10 @@
 import Layout from '../../../components/Layout'
 import PokemonCard from '../../../containers/Pokemon-card'
-import { getPokemonDetails } from '../../../helpers/request-helpers'
+import { getPokemonDetails } from '../../../lib/request-helpers'
 
 const POKEMON_ROOT = process.env.api.pokemon
 
 function DetailPage(props) {
-	console.log(props)
 	return (
 		<Layout>
 			<PokemonCard pokemon={props} />
