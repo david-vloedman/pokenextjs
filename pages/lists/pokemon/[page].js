@@ -22,24 +22,28 @@ export default function PokemonList(props) {
 		// get the pagination links that are going to be displayed
 		const index = pageNumber - 1 // minus one to account for array index starting @ zero
 		const first = paginationHrefs[0] // get the first page
-		const last = index < paginationHrefs.length ? paginationHrefs[paginationHrefs.length - 1] : null // last page
-		const next = index < paginationHrefs.length ? paginationHrefs[index + 1] : null// get the next page link
+		const last =
+			index < paginationHrefs.length
+				? paginationHrefs[paginationHrefs.length - 1]
+				: null // last page
+		const next =
+			index < paginationHrefs.length ? paginationHrefs[index + 1] : null // get the next page link
 		const previous = index >= 1 ? paginationHrefs[index - 1] : null // get the previous page
 
-    const items = []
-    
+		const items = []
+
 		if (previous) {
 			first.display = '<<'
-      previous.display = '<'
-      items.push(first)
+			previous.display = '<'
+			items.push(first)
 			items.push(previous)
-    }
-    if(next){
-      next.display = '>'
-      last.display = '>>'
-      items.push(next)
-      items.push(last)
-    }
+		}
+		if (next) {
+			next.display = '>'
+			last.display = '>>'
+			items.push(next)
+			items.push(last)
+		}
 
 		return items.map((item) => (
 			<Pagination.Item key={item.page} href={item.href} active={item.active}>
@@ -81,7 +85,7 @@ export async function getServerSideProps(context) {
 	try {
 		const res = await fetch(url)
 		const firstData = await res.json()
-    console.log(firstData)
+		console.log(firstData)
 		const pageCount = Math.floor(firstData.count / 20)
 
 		const pageData = await Promise.all(
