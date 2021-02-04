@@ -27,13 +27,13 @@ const StatList = ({stats}) => (
   </ul>
 )
 
-const Capitialized = ({word}) => <span className="text-capitalize">{word}</span>
+const Title = ({word: title}) => <div className={"text-capitalize " + Styles.pokemon_card_title}>{title}</div>
 
 export default function PokemonCard({ pokemon }) {
   return (
     
     <Card key={pokemon?.id} className={Styles.pokemon_card}>
-      
+      <Card.Title className={Styles.pokemon_card_title_container}><Title word={pokemon?.name}/></Card.Title>
       <ImgContainer>
         <Card.Img
           variant="top"
@@ -44,7 +44,7 @@ export default function PokemonCard({ pokemon }) {
 
       <BodyContainer>
         <Card.Body>
-          <Card.Title><Capitialized word={pokemon?.name}/></Card.Title>
+          
           
             Types:
           
