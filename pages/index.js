@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import useRequest from '../custom-hooks/useRequest'
+import Styles from '../styles/Components.module.css'
 
 const testPokemon = {
 	id: 12,
@@ -15,6 +16,7 @@ const testPokemon = {
 
 const Test = () => {
 	const {error, data, isPending} = useRequest('https://pokeapi.co/api/v2/contest-type/');
+	
 	if(error){
 		return <p>Error</p>
 	}
@@ -33,15 +35,15 @@ export default function Home(props) {
 			<h2>Some routes until navigation is setup</h2>
 			<ul>
 				<li>
-					<Link href={'/lists/pokemon/1'}>/links/pokemon/1</Link>
+					<div className={Styles.brand_text}>
+					<Link href={'/lists/pokemon/1'} >/links/pokemon/1</Link>
+					</div>
 					<p>
 						Shows a paginated list of all Pokemon in the PokeAPI. It uses a dynamic route where 1 is the page.
 						It shows a 'PokemonCard' for each pokemon and dynamically renders the background image based on the habitat of the Pokemon.
 					</p>
 				</li>
 			</ul>
-
-			<Test />
 		</Layout>
 	)
 }

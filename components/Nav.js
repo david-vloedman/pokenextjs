@@ -16,9 +16,7 @@ export default function Header({ props }) {
 				<BrandText text={'PokeNextJS!'} />
 			</NavBar.Brand>
 			<Nav>
-				<Nav.Item>
-					Test
-				</Nav.Item>
+			
 			</Nav>
 		</NavBar>
 	)
