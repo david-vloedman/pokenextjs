@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import PokemonCard from '../containers/Pokemon-card'
+import Link from 'next/link'
 
 const testPokemon = {
 	id: 12,
@@ -14,7 +14,19 @@ const testPokemon = {
 export default function Home(props) {
 	return (
 		<Layout>
-			<PokemonCard pokemon={testPokemon} />
+			<h1>Welcome to PokenextJs</h1>
+			<p>This project was created in order to learn some of the features of NextJS.</p>
+			<h2>Some routes until navigation is setup</h2>
+			<ul>
+				<li>
+					<Link href={'/lists/pokemon/1'}>/links/pokemon/1</Link>
+					<p>
+						Shows a paginated list of all Pokemon in the PokeAPI. It uses a dynamic route where 1 is the page.
+						It shows a 'PokemonCard' for each pokemon and dynamically renders the background image based on the habitat of the Pokemon.
+					</p>
+				</li>
+
+			</ul>
 		</Layout>
 	)
 }

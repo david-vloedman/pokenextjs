@@ -24,7 +24,7 @@ const List = ({ items, propName }) => (
 )
 
 const StatList = ({ stats }) => (
-	<ul className={Styles.pokemon_card_list}>
+	<ul className={`${Styles.pokemon_card_list}`}>
 		{stats?.map((stat) => (
 			<li key={stat.name}>
 				{stat.name}
@@ -54,7 +54,7 @@ export default function PokemonCard({ pokemon }) {
 			</ImgContainer>
 
 			<BodyContainer>
-				<Card.Body>
+				<Card.Body className={ Styles.gray_text_shadow}>
 					Types:
 					<List items={pokemon?.types} propName={'name'} />
 					Base Stats:

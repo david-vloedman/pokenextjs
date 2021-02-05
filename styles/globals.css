@@ -19,12 +19,13 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
-  text-shadow: 2px 2px rgb(139, 139, 139);
 }
 
 .main-bg{
   background-color:rgb(87, 126, 255);
 }
+
+
 
 .header{
   font-family: 'Press Start 2P', cursive;

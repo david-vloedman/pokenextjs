@@ -47,6 +47,7 @@
 	border-left: rgba(160, 52, 52, 0.63) 2px solid;
 	border-bottom: rgb(255, 58, 58) 2px solid;
 	border-right: rgb(255, 58, 58) 2px solid;
+	text-shadow: 2px 2px rgb(139, 139, 139);
 }
 
 .bg_habitat{

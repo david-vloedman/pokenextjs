@@ -4,7 +4,8 @@
   background-color:rgb(255, 75, 75) !important;
 }
 
-.brand_text{
-  color: yellow;
+.brand_text > a{
+  color: yellow !important;
+  text-decoration: none;
   text-shadow: 2px 2px rgb(39, 71, 255);
 }

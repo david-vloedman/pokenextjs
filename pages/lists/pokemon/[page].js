@@ -23,12 +23,15 @@ export default function PokemonList(props) {
 		// get the pagination links that are going to be displayed
 		const index = pageNumber - 1 // minus one to account for array index starting @ zero
 		const first = paginationHrefs[0] // get the first page
+
 		const last =
 			index < paginationHrefs.length
 				? paginationHrefs[paginationHrefs.length - 1]
 				: null // last page
+
 		const next =
 			index < paginationHrefs.length ? paginationHrefs[index + 1] : null // get the next page link
+
 		const previous = index >= 1 ? paginationHrefs[index - 1] : null // get the previous page
 
 		const items = []
@@ -66,6 +69,7 @@ export default function PokemonList(props) {
 				<ListView props={props} />
 			</main>
 			<div className={Styles.pagination_container}>
+				<p className={'text-center'}>Page {props.currentPage} of {props.pageCount}</p>
 				<Pagination className={'mx-auto text-center'}>
 					{paginationComponents(props.currentPage)}
 				</Pagination>

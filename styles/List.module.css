@@ -5,8 +5,12 @@
 }
 
 .pagination_container {
+  margin-top: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  color: #333;
+  text-shadow: 2px 2px yellow !important;
 }
 
 .pagination_button > a {

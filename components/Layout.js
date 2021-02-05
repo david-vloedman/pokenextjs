@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Head from 'next/head'
 import Footer from '../components/Footer'
-import Nav from './Nav'
+import Header from './Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Layout({ children }) {
@@ -15,7 +15,7 @@ export default function Layout({ children }) {
 			<div>
 				<Container className={'main-bg layout-container'}>
 					<Row>
-						<Nav />
+						<Header />
 					</Row>
 					<Row>
 						<Col>

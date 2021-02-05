@@ -5,22 +5,6 @@ import * as actions from "./actions"
 
 
 const initialState = {
-  searchForm: {
-    searchGroup: "",
-    keyword: "",
-  },
-
-  requestState: {
-    hasStatus: false,
-    status: {
-      pending: false,
-      success: false,
-      error: false,
-      notFound: false,
-      results: {}
-    }
-  },
-
   
 };
 
