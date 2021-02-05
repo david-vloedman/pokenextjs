@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* font-family: 'Press Start 2P', cursive;
+font-family: 'VT323', monospace; */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.main-bg{
+  background-color:rgb(87, 126, 255);
+}
+
+
+
+.header{
+  font-family: 'Press Start 2P', cursive;
+  color: #333;
+  background-color: rgb(187, 187, 187);
+  border-radius: 5px;
+  border: 2px var(--yellow) solid;
+}
+
+
+.layout-container{
+  min-width: 375px;
+}
