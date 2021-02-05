@@ -1,81 +1,25 @@
-import { createStore, applyMiddleware } from "redux";
-import { useMemo } from "react";
-import thunk from "redux-thunk";
-import * as actions from "./action-creators"
-
+import { createStore, applyMiddleware } from 'redux'
+import { useMemo } from 'react'
+import thunk from 'redux-thunk'
+import requestReducer from './reducers/requestReducer'
+import { useSelector, useDispatch } from "react-redux";
 
 const initialState = {
-  
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case actions.REQUEST_PENDING:
-      return {
-        ...state,
-        requestState:{
-          hasStatus: true,
-          status: {
-            pending: true,
-            success: false,
-            error: false,
-          }
-       
-        },
-      };
-    case actions.REQUEST_FAIL:
-      return {
-        ...state,
-        requestState: {
-          hasStatus: true,
-          status: {
-            pending: false,
-            success: false,
-            error: true,
-            notFound: false
-          }
-        }
-      }
-    case actions.REQUEST_SUCCESS:
-      return {
-        ...state,
-        requestState: {
-          results: action.payload,
-          hasStatus: true,
-          status: {
-            pending: false,
-            success: true,
-            error: false,
-            notFound: false,
-          },
-
-        },
-        
-      };
-      case "NO_RESULTS":
-        return {
-          ...state,
-          requestState: {
-            hasStatus: true,
-            status: {
-              pending: false,
-              success: true,
-              error: false,
-              notFound: true,
-            }
-          
-          }
-        }
-    default:
-      return state;
-  }
-};
+	error: undefined,
+	isPending: false,
+  data: undefined,
+}
 
 function initStore() {
-  return createStore(reducer, applyMiddleware(thunk));
+	return createStore(requestReducer, applyMiddleware(thunk))
 }
 
 export function useStore(initialState) {
-  const store = useMemo(() => initStore(initialState), [initialState]);
-  return store;
+	const store = useMemo(() => initStore(initialState), [initialState])
+	return store
+}
+
+
+export const useRequest = () => {
+
 }

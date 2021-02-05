@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import useRequest from '../custom-hooks/useRequest'
 
 const testPokemon = {
 	id: 12,
@@ -10,6 +11,19 @@ const testPokemon = {
 	weight: 320,
 	moves: [{ name: 'flash' }],
 }
+
+
+const Test = () => {
+	const {error, data, isPending} = useRequest('https://pokeapi.co/api/v2/contest-type/');
+	if(error){
+		return <p>Error</p>
+	}
+	if(isPending){
+		return <p>Loading...</p>
+	}
+	return <p>{JSON.stringify(data)}</p>
+}
+
 
 export default function Home(props) {
 	return (
@@ -25,8 +39,9 @@ export default function Home(props) {
 						It shows a 'PokemonCard' for each pokemon and dynamically renders the background image based on the habitat of the Pokemon.
 					</p>
 				</li>
-
 			</ul>
+
+			<Test />
 		</Layout>
 	)
 }
