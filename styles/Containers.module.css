@@ -49,6 +49,10 @@
 	border-right: rgb(255, 58, 58) 2px solid;
 }
 
+.bg_habitat{
+  background-size: cover;
+}
+
 .bg_habitat_cave{
   background-image: url('/static/images/habitats/compressed/cave.jpg');
 }

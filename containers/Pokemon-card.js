@@ -8,7 +8,7 @@ const ImgContainer = ({ habitat, children }) => {
   const cssClass = Styles[getHabitatBGClass(habitat)];
   console.log(Styles)
   return(
-	<div className={`${Styles.pokemon_card_img_container} ${cssClass}`}>{children}</div>
+	<div className={`${Styles.pokemon_card_img_container} ${cssClass} ${Styles.bg_habitat}`}>{children}</div>
 )}
 
 const BodyContainer = ({ children }) => (
