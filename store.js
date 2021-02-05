@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import { useMemo } from "react";
 import thunk from "redux-thunk";
-import * as actions from "./actions"
+import * as actions from "./action-creators"
 
 
 const initialState = {
