@@ -1,6 +1,6 @@
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-
+import NavDropDown from 'react-bootstrap/NavDropdown'
 import Link from 'next/link'
 
 import Styles from '../styles/Components.module.css'
@@ -20,9 +20,18 @@ export default function Header({ props }) {
 			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 			<Navbar.Collapse id='responsive-navbar-nav'>
 				<Nav className="mr-auto">
+					<NavDropDown title="Pokemon">
+						<NavDropDown.Item>
+						<Nav.Link>
+							<Link href="#">Search Pokemon</Link>
+						</Nav.Link>
+						</NavDropDown.Item>
+						<NavDropDown.Item>
 					<Nav.Link>
-						<Link href='/lists/pokemon/1'>Pokemon</Link>
+						<Link href='/lists/pokemon/1'>All Pokemon</Link>
 					</Nav.Link>
+					</NavDropDown.Item>
+					</NavDropDown>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
