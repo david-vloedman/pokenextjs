@@ -30,9 +30,12 @@ const Test = () => {
 export default function Home(props) {
 	return (
 		<Layout>
-			<h1>Welcome to PokenextJs</h1>
-			<p>This project was created in order to learn some of the features of NextJS.</p>
-			<h2>Some routes until navigation is setup</h2>
+			<div className={Styles.brand_text}>
+
+			
+			<h3>Welcome to PokenextJs</h3>
+			<p>This is an educational project, using NextJS and data from the PokeApi.</p>
+			<h5>Some routes until navigation is setup</h5>
 			<ul>
 				<li>
 					<div className={Styles.brand_text}>
@@ -44,6 +47,7 @@ export default function Home(props) {
 					</p>
 				</li>
 			</ul>
+			</div>
 		</Layout>
 	)
 }

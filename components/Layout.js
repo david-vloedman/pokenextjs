@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import Header from './Nav'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 export default function Layout({ children }) {
 	return (
@@ -14,14 +14,12 @@ export default function Layout({ children }) {
 			</Head>
 			<div>
 				<Container className={'main-bg layout-container'}>
-					<Row>
+					
 						<Header />
-					</Row>
-					<Row>
-						<Col>
+					
+			
 							<div className={'content-container p-2 my-2'}>{children}</div>
-						</Col>
-					</Row>
+			
 
 					<Footer />
 				</Container>

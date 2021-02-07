@@ -1,23 +1,30 @@
-import NavBar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+
 import Link from 'next/link'
 
 import Styles from '../styles/Components.module.css'
 
 const BrandText = ({ text }) => (
-
-	<span className={Styles.brand_text}><Link href={'/'}>{text}</Link></span>
+	<span className={Styles.brand_text}>
+		<Link href={'/'}>{text}</Link>
+	</span>
 )
 
 export default function Header({ props }) {
 	return (
-		<NavBar className={Styles.nav_bar}>
-			<NavBar.Brand>
+		<Navbar collapseOnSelect className={Styles.nav_bar} fixed='top' expand='lg'>
+			<Navbar.Brand>
 				<BrandText text={'PokeNextJS!'} />
-			</NavBar.Brand>
-			<Nav>
-			
-			</Nav>
-		</NavBar>
+			</Navbar.Brand>
+			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+			<Navbar.Collapse id='responsive-navbar-nav'>
+				<Nav className="mr-auto">
+					<Nav.Link>
+						<Link href='/lists/pokemon/1'>Pokemon</Link>
+					</Nav.Link>
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
 	)
 }

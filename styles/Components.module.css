@@ -2,6 +2,8 @@
 .nav_bar{
   width: 100%;
   background-color:rgb(255, 75, 75) !important;
+  border-bottom:black 2px solid;
+  
 }
 
 .brand_text > a{

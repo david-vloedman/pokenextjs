@@ -64,7 +64,7 @@ export default function PokemonList(props) {
 	}
 
 	return (
-		<Layout>
+		<div>
 			<main className={Styles.list_container}>
 				<ListView props={props} />
 			</main>
@@ -74,7 +74,7 @@ export default function PokemonList(props) {
 					{paginationComponents(props.currentPage)}
 				</Pagination>
 			</div>
-		</Layout>
+		</div>
 	)
 }
 

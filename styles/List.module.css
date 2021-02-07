@@ -1,7 +1,12 @@
 .list_container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+}
+
+.list_item_container{
+  margin: 1rem;
 }
 
 .pagination_container {
