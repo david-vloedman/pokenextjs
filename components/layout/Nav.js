@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import NavDropDown from 'react-bootstrap/NavDropdown'
 import Link from 'next/link'
 
-import Styles from '../styles/Components.module.css'
+import Styles from '../../styles/Components.module.css'
 
 const BrandText = ({ text }) => (
 	<span className={Styles.brand_text}>

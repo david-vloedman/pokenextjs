@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Link from 'next/link'
 import useRequest from '../custom-hooks/useRequest'
 import Styles from '../styles/Components.module.css'
@@ -29,7 +28,7 @@ const Test = () => {
 
 export default function Home(props) {
 	return (
-		<Layout>
+		<div>
 			<div className={Styles.brand_text}>
 
 			
@@ -48,7 +47,7 @@ export default function Home(props) {
 				</li>
 			</ul>
 			</div>
-		</Layout>
+			</div>
 	)
 }
 

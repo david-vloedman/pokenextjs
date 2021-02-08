@@ -1,5 +1,4 @@
 import ListView from '../../../components/pokemon/ListView'
-import Layout from '../../../components/Layout'
 import { getPokemonDetails } from '../../../lib/request-helpers'
 import Styles from '../../../styles/List.module.css'
 import Pagination from 'react-bootstrap/Pagination'

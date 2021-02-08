@@ -1,4 +1,3 @@
-import Layout from '../../../components/Layout'
 import PokemonCard from '../../../containers/Pokemon-card'
 import { getPokemonDetails } from '../../../lib/request-helpers'
 

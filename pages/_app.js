@@ -1,7 +1,8 @@
 import 'bootstrap/scss/bootstrap.scss'
 import '../styles/custom-bs-overrides.scss'
 import '../styles/globals.css'
-import Layout from '../components/Layout'
+import 'nes.css/css/nes.css'
+import Layout from '../components/layout/Layout'
 import {Provider} from "react-redux"
 import {useStore} from "../store"
 
