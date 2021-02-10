@@ -1,21 +1,6 @@
 import Link from 'next/link'
 import Styles from '../styles/Components.module.css'
 
-const testPokemon = {
-	id: 12,
-	name: 'butterfree',
-	img:
-		'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png',
-	height: 11,
-	weight: 320,
-	moves: [{ name: 'flash' }],
-}
-
-
-const Test = () => {
-
-}
-
 
 export default function Home(props) {
 	return (

@@ -1,6 +1,4 @@
-import {
-	searchFormChange,
-} from '../redux/slices/searchFormSlice'
+import { searchFormChange } from '../redux/slices/searchFormSlice'
 import { getPokemonCardData, createSearchFormURL } from '../lib/request-helpers'
 
 export default function useSearchForm({ useDispatch, useSelector }) {

@@ -57,7 +57,7 @@ export default function PokemonCard({ pokemon }) {
 			</ImgContainer>
 
 			<BodyContainer>
-				<Card.Body className={"text-left"}>
+				<Card.Body className={'text-left'}>
 					Types:
 					<List items={pokemon?.types} propName={'name'} />
 					Base Stats:

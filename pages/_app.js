@@ -6,12 +6,7 @@ import {Provider} from "react-redux"
 import {initStore} from "../store"
 
 const defaultState = {
-  form: {
-    pokemonName: ''
-  },
-  results: {
 
-  }
 }
 
 function MyApp({ Component, pageProps }) {
