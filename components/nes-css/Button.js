@@ -4,6 +4,7 @@ import {getVariantClass, variants} from '../../lib/nes-css-helpers'
 const BASE_BUTTON = 'nes-btn'
 
 export default function Button({variant, label, onClick, type, ...props }) {
+
 	return (
     <button 
       type={type}

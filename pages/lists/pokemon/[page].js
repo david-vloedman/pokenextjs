@@ -1,12 +1,15 @@
 import ListView from '../../../components/pokemon/ListView'
-import { getPokemonDetails } from '../../../lib/request-helpers'
+import { mapHabitatToPokemon } from '../../../lib/request-helpers'
 import Styles from '../../../styles/List.module.css'
 import Pagination from 'react-bootstrap/Pagination'
 import { getHabitatImages } from '../../../lib/file-helpers'
 
+
 const POKEMON_ROOT = process.env.api.pokemon
 
 export default function PokemonList(props) {
+
+
 	const paginationHrefs = []
 	const pageCountArr = new Array(props.pageCount)
 
@@ -87,7 +90,7 @@ const createRequestURL = (root, offset, limit) =>
 export async function getServerSideProps(context) {
 	const pageNumber = context.params.page
 	const habitatImageDirs = getHabitatImages('./public/static/images/habitats')
-
+	
 	let url
 
 	if (pageNumber > 1) {
@@ -102,9 +105,15 @@ export async function getServerSideProps(context) {
 		const res = await fetch(url)
 		const firstData = await res.json()
 		const pageCount = Math.floor(firstData.count / 20)
+		
 		const pageData = await Promise.all(
 			firstData.results.map(async (poke) => {
-				return await getPokemonDetails(poke.url)
+				const pokemonResponse = await fetch(poke.url)
+				const pokemonData = await pokemonResponse.json();
+				const habitatResponse = await fetch(pokemonData.species.url)
+				const habitatData = await habitatResponse.json()
+
+				return mapHabitatToPokemon(pokemonData, habitatData);
 			})
 		)
 		if (pageData.notFound) {
@@ -121,6 +130,7 @@ export async function getServerSideProps(context) {
 			},
 		}
 	} catch (err) {
+		console.log(err);
 		return {
 			notFound: true,
 		}

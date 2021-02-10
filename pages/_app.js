@@ -1,22 +1,31 @@
 import 'bootstrap/scss/bootstrap.scss'
-import '../styles/custom-bs-overrides.scss'
 import '../styles/globals.css'
 import 'nes.css/css/nes.css'
 import Layout from '../components/layout/Layout'
 import {Provider} from "react-redux"
-import {useStore} from "../store"
+import {initStore} from "../store"
 
+const defaultState = {
+  form: {
+    pokemonName: ''
+  },
+  results: {
+
+  }
+}
 
 function MyApp({ Component, pageProps }) {
   
-  const store = useStore()
+  const store = initStore(defaultState)
+  console.log(store)
 
   return (
     <Provider store={store}>
       <Layout>
       <Component {...pageProps} />
       </Layout>
-    </Provider>)
+    </Provider>
+    )
     
 }
 

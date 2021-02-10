@@ -1,25 +1,14 @@
-import { createStore, applyMiddleware } from 'redux'
-import { useMemo } from 'react'
+import { createStore, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import requestReducer from './reducers/requestReducer'
-import { useSelector, useDispatch } from "react-redux";
-
-const initialState = {
-	error: undefined,
-	isPending: false,
-  data: undefined,
-}
-
-function initStore() {
-	return createStore(requestReducer, applyMiddleware(thunk))
-}
-
-export function useStore(initialState) {
-	const store = useMemo(() => initStore(initialState), [initialState])
-	return store
-}
+import reducers from './redux/reducer'
 
 
-export const useRequest = () => {
+const composeEnhancers =
+	(typeof window !== 'undefined' &&
+		window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+	compose
 
+
+export function initStore() {
+	return createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 }

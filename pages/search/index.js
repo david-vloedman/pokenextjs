@@ -1,27 +1,29 @@
-import { useState } from 'react'
-import Button from '../../components/nes-css/Button'
-import Input from '../../components/nes-css/Input'
-import Field from '../../components/nes-css/Field'
+import SearchForm from '../../components/forms/SearchForm'
+import { useSelector } from 'react-redux'
+import PokemonCard from '../../containers/Pokemon-card'
+import Col from 'react-bootstrap/Col'
+
 
 export default function Index() {
-	const [state, setState] = useState({
-		input: '',
-	})
 
-	const onChange = (e) => {
-		const key = e.target.id
-		const value = e.target.value
-		form[key] = value
-	}
+	const request = useSelector(state => state.request.request)
+
 
 	return (
-    <div className={'nes-container with-title'}>
-      <p className={'title'}>Search</p>
-		<Field>
-      <label>Input</label>
-			<Input variant={'success'} onChange={() => console.log(hey)} />
-			<Button label='TEST BUTTON' variant={'success'} />
-		</Field>
-    </div>
+		<Col>
+		<div className='nes-container with-title text-right m-auto'>
+			<p className={'title'}>Search!</p>
+			<SearchForm />
+			
+			<div className="text-center nes-container with-title">
+				<p className="title">Results</p>
+				{request?.isPending ? "Loading..." : null}
+				{request?.data ? <PokemonCard pokemon={request.data} /> : null}
+				{request?.noResults ? "Not found" : null}
+				{request?.hasError ? "Error" : null}
+			</div>
+		</div>
+		</Col>
+		
 	)
 }

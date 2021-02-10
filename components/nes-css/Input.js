@@ -16,7 +16,7 @@ export default function Input({variant, type, onChange, id, name,  props}){
   )
 }
 
-Input.PropTypes = {
+Input.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
   variant: PropTypes.oneOf(Object.values(variants)),

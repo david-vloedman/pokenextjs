@@ -7,8 +7,8 @@ export default function ListView({ props }) {
 	if (!results) return null
 
 	return results.map((item) => (
-		<ListItemContainer>
-			<PokemonCard key={item.id} pokemon={item} />
+		<ListItemContainer key={item.id}>
+			<PokemonCard pokemon={item} />
 		</ListItemContainer>
 	))
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
+
 /* font-family: 'Press Start 2P', cursive;
 font-family: 'VT323', monospace; */
 
@@ -26,6 +27,6 @@ a {
 }
 
 .layout-container{
-  padding-top: 3rem;
+  padding-top: 5rem;
   min-width: 375px;
 }

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import useRequest from '../custom-hooks/useRequest'
 import Styles from '../styles/Components.module.css'
 
 const testPokemon = {
@@ -14,15 +13,7 @@ const testPokemon = {
 
 
 const Test = () => {
-	const {error, data, isPending} = useRequest('https://pokeapi.co/api/v2/contest-type/');
-	
-	if(error){
-		return <p>Error</p>
-	}
-	if(isPending){
-		return <p>Loading...</p>
-	}
-	return <p>{JSON.stringify(data)}</p>
+
 }
 
 

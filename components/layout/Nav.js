@@ -19,18 +19,16 @@ export default function Header({ props }) {
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 			<Navbar.Collapse id='responsive-navbar-nav'>
-				<Nav className="mr-auto">
-					<NavDropDown title="Pokemon">
-						<NavDropDown.Item>
-						<Nav.Link>
-							<Link href="#">Search Pokemon</Link>
-						</Nav.Link>
+				<Nav className='mr-auto'>
+					<NavDropDown title='Pokemon'>
+					
+						<NavDropDown.Item href={'/search'}>
+							Search Pokemon
 						</NavDropDown.Item>
-						<NavDropDown.Item>
-					<Nav.Link>
-						<Link href='/lists/pokemon/1'>All Pokemon</Link>
-					</Nav.Link>
-					</NavDropDown.Item>
+					
+						<NavDropDown.Item href='/lists/pokemon/1'>
+							All Pokemon
+						</NavDropDown.Item>
 					</NavDropDown>
 				</Nav>
 			</Navbar.Collapse>

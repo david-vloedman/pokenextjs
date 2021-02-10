@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@reduxjs/toolkit": "^1.5.0",
     "bootstrap": "^4.6.0",
     "fs": "0.0.1-security",
     "nes.css": "^2.3.0",
