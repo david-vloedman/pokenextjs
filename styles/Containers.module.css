@@ -1,5 +1,5 @@
 .pokemon_card {
-	width: 20rem !important;
+	width: 16rem !important;
 	border-bottom: rgba(160, 52, 52, 0.63) 2px solid !important;
 	border-right: rgba(160, 52, 52, 0.63) 2px solid !important;
 	border-top: rgb(255, 142, 142) 2px solid !important;
@@ -25,8 +25,6 @@
 	margin-right: 1rem;
 	border-radius: 5px;
 }
-
-
 
 .pokemon_card_body {
 	font-size: 0.6rem;

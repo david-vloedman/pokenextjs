@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
-import {getPokemonCardData} from '../lib/request-helpers'
 
 const searchFormReducer = {
 	searchFormChange(state, action) {
@@ -44,7 +43,6 @@ const requestReducer = {
 		}
 	},
 	requestFail(state, action) {
-		console.log(action)
 		return {
 			...state,
 			request: {

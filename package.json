@@ -24,7 +24,8 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.32.6"
+    "sass": "^1.32.6",
+    "sharp": "^0.26.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

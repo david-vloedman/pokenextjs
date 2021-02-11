@@ -24,6 +24,7 @@ a {
 
 .main-bg{
   background-color:rgb(87, 126, 255);
+  min-height: 100vh;
 }
 
 .layout-container{
