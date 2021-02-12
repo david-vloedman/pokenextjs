@@ -1,4 +1,4 @@
-import { searchFormChange } from '../redux/slices/searchFormSlice'
+import { searchFormChange, searchFormError } from '../redux/reducer'
 import { getPokemonCardData, createSearchFormURL } from '../lib/request-helpers'
 
 export default function useSearchForm({ useDispatch, useSelector }) {
@@ -17,9 +17,11 @@ export default function useSearchForm({ useDispatch, useSelector }) {
 
 		if (form.form?.pokemonName) {
 			const url = createSearchFormURL(form.form.pokemonName.toLowerCase())
-			getPokemonCardData(url, dispatch)
+			return getPokemonCardData(url, dispatch)
 		}
+
+		dispatch(searchFormError())
 	}
 
-	return { form, onChange, onSubmit }
+	return { ...form, onChange, onSubmit }
 }

@@ -1,0 +1,21 @@
+.pokemon_list_item{
+  max-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  border-left: 1px red solid;
+  border-right: 1px red solid;
+  border-bottom: 1px red solid;
+}
+
+.pokemon_list{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.pokemon_list > li:first-child{
+  border-top: 1px red solid;
+}

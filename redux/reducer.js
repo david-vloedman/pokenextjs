@@ -7,6 +7,7 @@ const searchFormReducer = {
 			...state,
 			form: {
 				...state.form,
+				hasError: false,
 				[action.payload.key]: action.payload.value,
 			},
 		}
@@ -16,6 +17,14 @@ const searchFormReducer = {
       ...state,
 		}
 	},
+	searchFormError(state, action){
+		return {
+			...state, 
+			form: {
+				hasError: true
+			}			
+		}
+	}
 }
 
 const searchFormSlice = createSlice({
@@ -68,7 +77,7 @@ const requestSlice = createSlice({
   reducers: requestReducer
 })
 
-export const { searchFormChange, searchFormSubmit } = searchFormSlice.actions
+export const { searchFormChange, searchFormSubmit, searchFormError } = searchFormSlice.actions
 
 export const {requestFail, requestPending, requestSuccess, requestNoResults} = requestSlice.actions
 
